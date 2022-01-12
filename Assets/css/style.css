@@ -1,3 +1,4 @@
+/* Using the this class and adding a display of none will allow us to change the visbility through javascript*/
 .hide {
   display: none;
 }

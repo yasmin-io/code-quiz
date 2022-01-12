@@ -1,3 +1,4 @@
+// Array object to store the questions and answers that will be used in the quiz game
 var quizQuestions = [
   {
     question: "Question 1",
@@ -21,6 +22,7 @@ var quizQuestions = [
   },
 ];
 
+// Setting the index to 0 on the global scope so that the value
 var questionIndex = 0;
 
 var startPage = document.getElementById("start-page");
@@ -31,9 +33,9 @@ var startButton = document.getElementById("start-quiz-button");
 var questionTitle = document.getElementById("question-title");
 var questionAnswersSection = document.getElementById("question-answers");
 
+// This function is what is triggered after you click the start game button
 function startGame(event) {
   event.preventDefault();
-  console.log("Game Started");
 
   startPage.setAttribute("class", "hide");
   questionPage.removeAttribute("class");
@@ -43,19 +45,23 @@ function startGame(event) {
   nextQuestion();
 }
 
+// This function is what plays the next question
 function nextQuestion() {
   var questionObject = quizQuestions[questionIndex];
 
-  console.log(questionObject);
-
+  // Change the Questions text content to the value of the property from the object
   questionTitle.textContent = questionObject.question;
 
+  // Stating that the innerHTML is blank stops the new set of questions from reprinting next to the previous ones
+  questionAnswersSection.innerHTML = "";
+  // For each of the answers in questionObject create buttons with the question Answers inside them as options
   questionObject.answers.forEach(function (answer) {
     var answerButton = document.createElement("button");
     answerButton.setAttribute("value", answer);
 
     answerButton.textContent = answer;
-    console.log(answerButton);
+    // 'On Click' on any of the answer buttons we want to run selectAnswer and clear the previous questions listed
+    // ready for the next set
     answerButton.onclick = selectAnswer;
     questionAnswersSection.appendChild(answerButton);
   });
@@ -72,7 +78,29 @@ function selectAnswer() {
   }
 
   questionIndex++;
-  nextQuestion();
+
+  if (questionIndex === quizQuestions.length) {
+    endQuiz();
+  } else {
+    nextQuestion();
+  }
+}
+
+function endQuiz() {
+  console.log("Quiz finished");
+
+  //clear interval
+
+  //hide questions section
+
+  //show end page which inclues an input box and submit button
+
+  //on click of that submit button calls saveHighscore
+  //
+}
+
+function saveHighscore() {
+  //the score would be saved to local storage
 }
 
 startButton.addEventListener("click", startGame);
