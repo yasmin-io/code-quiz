@@ -127,9 +127,15 @@ function saveHighscore() {
   endPage.setAttribute("class", "hide");
   highscorePage.removeAttribute("class");
 
-  //localStorage.setItem("Initials", scoreInput);
   localStorage.setItem("Initials", scoreInput.value);
-  localStorage.getItem("Initials");
+
+  scoreInput.forEach(function () {
+    var listItem = document.createElement("li");
+    listItem.textContent = scoreInput.value;
+    highscoreList.appendChild(listItem);
+  });
+
+  //localStorage.setItem("Initials", scoreInput);
   //make sure local storage saves multiple
   //save the input in a list below highscores
   //create a new li and in the li have the initials
