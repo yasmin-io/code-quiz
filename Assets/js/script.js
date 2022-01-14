@@ -33,15 +33,18 @@ var questionIndex = 0;
 var startPage = document.getElementById("start-page");
 var questionPage = document.getElementById("questions-page");
 var endPage = document.getElementById("end-page");
+var highscorePage = document.getElementById("highscore-page");
 
 // Other variables to for elements and such
 var startButton = document.getElementById("start-quiz-button");
+var submitButton = document.getElementById("submit-initials-button");
 var questionTitle = document.getElementById("question-title");
 var questionAnswersSection = document.getElementById("question-answers");
 
 // This function is what is triggered after you click the start game button
 function startGame(event) {
   event.preventDefault();
+  debugger;
 
   startPage.setAttribute("class", "hide");
   questionPage.removeAttribute("class");
@@ -119,6 +122,11 @@ function endQuiz() {
 
 function saveHighscore() {
   //the score would be saved to local storage
+  endPage.setAttribute("class", "hide");
+  highscorePage.removeAttribute("class");
+
+  console.log("hello!");
 }
 
+submitButton.addEventListener("click", saveHighscore);
 startButton.addEventListener("click", startGame);
