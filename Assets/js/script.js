@@ -41,6 +41,8 @@ var startButton = document.getElementById("start-quiz-button");
 var submitButton = document.getElementById("submit-initials-button");
 var questionTitle = document.getElementById("question-title");
 var questionAnswersSection = document.getElementById("question-answers");
+var scoreInput = document.getElementById("initials-input");
+var highscoreList = document.getElementById("highscore-list");
 
 // This function is what is triggered after you click the start game button
 function startGame(event) {
@@ -124,6 +126,14 @@ function saveHighscore() {
   //the score would be saved to local storage
   endPage.setAttribute("class", "hide");
   highscorePage.removeAttribute("class");
+
+  //localStorage.setItem("Initials", scoreInput);
+  localStorage.setItem("Initials", scoreInput.value);
+  localStorage.getItem("Initials");
+  //make sure local storage saves multiple
+  //save the input in a list below highscores
+  //create a new li and in the li have the initials
+  //add scores later
 }
 
 function goBack() {
