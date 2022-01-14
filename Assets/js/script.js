@@ -23,12 +23,18 @@ var quizQuestions = [
 ];
 
 // Setting the index to 0 on the global scope so that the value
+//
+//(finish this)!!!!
+//
+//
+//
 var questionIndex = 0;
-
+// Variable for the different Pages
 var startPage = document.getElementById("start-page");
 var questionPage = document.getElementById("questions-page");
 var endPage = document.getElementById("end-page");
 
+// Other variables to for elements and such
 var startButton = document.getElementById("start-quiz-button");
 var questionTitle = document.getElementById("question-title");
 var questionAnswersSection = document.getElementById("question-answers");
@@ -52,33 +58,43 @@ function nextQuestion() {
   // Change the Questions text content to the value of the property from the object
   questionTitle.textContent = questionObject.question;
 
-  // Stating that the innerHTML is blank stops the new set of questions from reprinting next to the previous ones
+  // Stating that the innerHTML is blank stops the new set of questions from reprinting
+  // next to the previous ones
   questionAnswersSection.innerHTML = "";
-  // For each of the answers in questionObject create buttons with the question Answers inside them as options
+
+  // For each of the answers in questionObject create buttons with the question Answers
+  // inside them as options
   questionObject.answers.forEach(function (answer) {
     var answerButton = document.createElement("button");
     answerButton.setAttribute("value", answer);
 
     answerButton.textContent = answer;
-    // 'On Click' on any of the answer buttons we want to run selectAnswer and clear the previous questions listed
-    // ready for the next set
+
+    // 'On Click' on any of the answer buttons we want to run selectAnswer and clear the
+    // previous questions listed
     answerButton.onclick = selectAnswer;
     questionAnswersSection.appendChild(answerButton);
   });
 }
 
 function selectAnswer() {
-  console.log("Button clicked: ", this.value);
+  // If the current value of 'this' does not equal the current questions correct answer then
+  // do................
+  //FINISH THIS
   if (this.value !== quizQuestions[questionIndex].correctAnswer) {
     console.log("User selected the incorrect answer");
     // remove time from timer
+    // REMOVE STUFF FROM TIMER USING TIMER INTERVAL
   } else {
     console.log("User selected the correct answer");
     //add to the users score
   }
 
+  // Move to the next question
   questionIndex++;
 
+  // If the current question is the last question available then run the endQuiz function but
+  // if not, then the game hasn't. Run the nextQuestion function and display a new question.
   if (questionIndex === quizQuestions.length) {
     endQuiz();
   } else {
@@ -92,6 +108,8 @@ function endQuiz() {
   //clear interval
 
   //hide questions section
+  questionPage.setAttribute("class", "hide");
+  endPage.removeAttribute("class");
 
   //show end page which inclues an input box and submit button
 
