@@ -43,6 +43,9 @@ var questionTitle = document.getElementById("question-title");
 var questionAnswersSection = document.getElementById("question-answers");
 var scoreInput = document.getElementById("initials-input");
 var highscoreList = document.getElementById("highscore-list");
+var highscores = [];
+
+var initials = localStorage.getItem("initals");
 
 // This function is what is triggered after you click the start game button
 function startGame(event) {
@@ -122,24 +125,28 @@ function endQuiz() {
   //
 }
 
+function storeHighscores() {
+  // Stringify and set key in LocalStorage highscore initials
+  localStorage.setItem("Initials", JSON.stringify(scoreInput.value));
+}
+
 function saveHighscore() {
   //the score would be saved to local storage
   endPage.setAttribute("class", "hide");
   highscorePage.removeAttribute("class");
 
-  localStorage.setItem("Initials", scoreInput.value);
+  // Clear highscore list element
+  highscoreList.innerHTML = "";
+  storeHighscores();
 
-  scoreInput.forEach(function () {
-    var listItem = document.createElement("li");
-    listItem.textContent = scoreInput.value;
-    highscoreList.appendChild(listItem);
-  });
+  // Creating a new li for each score
+  for (var i = 0; i < highscores.length; i++) {
+    var highscore = highscores[i];
 
-  //localStorage.setItem("Initials", scoreInput);
-  //make sure local storage saves multiple
-  //save the input in a list below highscores
-  //create a new li and in the li have the initials
-  //add scores later
+    var li = document.createElement("li");
+    li.textContent = highscore;
+    li.setAttribute("", i);
+  }
 }
 
 function goBack() {
