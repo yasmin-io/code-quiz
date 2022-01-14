@@ -43,6 +43,7 @@ var questionTitle = document.getElementById("question-title");
 var questionAnswersSection = document.getElementById("question-answers");
 var scoreInput = document.getElementById("initials-input");
 var highscoreList = document.getElementById("highscore-list");
+var timerEl = document.getElementById("timer");
 var highscores = [];
 
 var initials = localStorage.getItem("initals");
@@ -57,6 +58,22 @@ function startGame(event) {
   //set timer
 
   nextQuestion();
+  quizTimer();
+}
+
+function quizTimer() {
+  var timeLeft = 6;
+
+  // Decrement the value of timeLeft and display the updated text
+  countDown = setInterval(function () {
+    timeLeft--;
+    timerEl.innerText = timeLeft;
+    // Once the timer reaches a value of 0, I want to end the timer
+    if (timeLeft <= 0) {
+      clearInterval(timerEl);
+      timerEl.innerHTML = "is up!";
+    }
+  }, 1000);
 }
 
 // This function is what plays the next question
@@ -135,17 +152,20 @@ function saveHighscore() {
   endPage.setAttribute("class", "hide");
   highscorePage.removeAttribute("class");
 
+  //
+  //
+  //
+  //
   // Clear highscore list element
   highscoreList.innerHTML = "";
   storeHighscores();
 
-  // Creating a new li for each score
+  // Creating a new li for each score ??????????
   for (var i = 0; i < highscores.length; i++) {
     var highscore = highscores[i];
 
     var li = document.createElement("li");
     li.textContent = highscore;
-    li.setAttribute("", i);
   }
 }
 
