@@ -1,24 +1,36 @@
 // Array object to store the questions and answers that will be used in the quiz game
 var quizQuestions = [
   {
-    question: "Question 1",
-    answers: ["A", "B", "C", "D", "E"],
-    correctAnswer: "A",
+    question: "1. Which company developed JavaScript?",
+    answers: [
+      "Microsoft",
+      "Netscape",
+      "Netscape",
+      "Landscape",
+      "Internet Explorer",
+    ],
+    correctAnswer: "Netscape",
   },
   {
-    question: " Q 2",
-    answers: ["A", "B", "C", "D", "E"],
-    correctAnswer: "B",
+    question: "2. Which one isn't a JavaScript Data Type?",
+    answers: ["Number", "Boolean", "Flex", "String", "Object"],
+    correctAnswer: "Flex",
   },
   {
-    question: "Question 3",
-    answers: ["A", "B", "C", "D", "E"],
-    correctAnswer: "C",
+    question: "3. What is this keyword in JavaScript?",
+    answers: [
+      "The object from where it was called",
+      "It creates an element",
+      "It begins a timer",
+      "It stands for Heading",
+      "Refering to the <script> tag",
+    ],
+    correctAnswer: "The object from where it was called",
   },
   {
-    question: " Q 4",
-    answers: ["A", "B", "C", "D", "E"],
-    correctAnswer: "D",
+    question: "4. Which symbol is used for single line comments in Javascript?",
+    answers: ["//", "<!--", "/*", "<!-", "//*"],
+    correctAnswer: "//",
   },
 ];
 
