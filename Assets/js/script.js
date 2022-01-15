@@ -23,11 +23,6 @@ var quizQuestions = [
 ];
 
 // Setting the index to 0 on the global scope so that the value
-//
-//(finish this)!!!!
-//
-//
-//
 var questionIndex = 0;
 // Variable for the different Pages
 var startPage = document.getElementById("start-page");
@@ -44,6 +39,7 @@ var questionAnswersSection = document.getElementById("question-answers");
 var scoreInput = document.getElementById("initials-input");
 var highscoreList = document.getElementById("highscore-list");
 var timerEl = document.getElementById("timer");
+var highscoreLink = document.getElementById("highscore-link");
 var highscores = [];
 
 var initials = localStorage.getItem("initals");
@@ -71,7 +67,7 @@ function quizTimer() {
     // Once the timer reaches a value of 0, I want to end the timer
     if (timeLeft <= 0) {
       clearInterval(timerEl);
-      timerEl.innerHTML = "is up!";
+      timerEl.innerHTML = "0";
     }
   }, 1000);
 }
@@ -151,6 +147,7 @@ function saveHighscore() {
   //the score would be saved to local storage
   endPage.setAttribute("class", "hide");
   highscorePage.removeAttribute("class");
+  highscoreLink.setAttribute("class", "hide");
 
   //
   //
@@ -174,6 +171,7 @@ function goBack() {
   location.reload();
 }
 
+// Event listeners for all buttons in my quiz
 backButton.addEventListener("click", goBack);
 submitButton.addEventListener("click", saveHighscore);
 startButton.addEventListener("click", startGame);
