@@ -4,78 +4,86 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- CSS Style Sheet -->
     <link rel="stylesheet" href="./Assets/css/style.css" />
+    <!-- Font Links-->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Domine:wght@600&family=Montserrat:ital,wght@0,300;0,400;0,500;0,700;1,100&display=swap"
       rel="stylesheet"
     />
+    <!--Reset CSS StyleSheet-->
+    <link rel="stylesheet" href="./Assets/css/reset.css" />
 
     <title>Code Quiz</title>
   </head>
   <body>
-    <!-- Display Timer to show the User how long they have left of their game-->
-    <div id="timer-title">Time Remaining:<span id="timer"></span></div>
+    <main>
+      <!-- Display Timer to show the User how long they have left of their game-->
+      <div id="timer-title">Time Remaining:<span id="timer"></span></div>
 
-    <!--- Information 'Start Game' Page -->
-    <div id="start-page">
-      <h1 id="quiz-title">Coding Quiz Challenge</h1>
-      <p id="coding-para">
-        This is a short quiz to put your javascript knowledge to the test.
-        <br /><br />
-        Here are the rules:<br /><br />1. You have 20 seconds to answer all 4
-        questions. <br />2. If you get a question wrong, time will be taken off
-        your 'Time Remaining'.<br />
-        3. Look closely and be FAST! A trick question might appear. <br /><br />
-        Good Luck!
-      </p>
-      <button id="start-quiz-button" class="start-button">Start</button>
-    </div>
-    <!-- 'Quiz Questions' Display Page -->
-    <!-- Using the class of hide to change the display through css using javascript -->
-    <!-- Here is where the questions & answers will be implemented through javascript-->
-
-    <div id="questions-page" class="hide">
-      <h3 id="question-title" class="question"></h3>
-      <div id="question-answers" class="answers"></div>
-      <div id="correct-click" class="hide">
-        <hr />
-        Correct!
+      <!--- Information 'Start Game' Page -->
+      <div id="start-page">
+        <h1 id="quiz-title">Coding Quiz Challenge</h1>
+        <p id="coding-para">
+          This is a short quiz to put your javascript knowledge to the test.
+          <br /><br />
+          Here are the rules:<br /><br />1. You have 20 seconds to answer all 4
+          questions. <br />2. If you get a question wrong, time will be taken
+          off your 'Time Remaining'.<br />
+          3. Look closely and be FAST! A trick question might appear.
+          <br /><br />
+          Good Luck!
+        </p>
+        <button id="start-quiz-button" class="start-button">Start</button>
       </div>
-      <div id="incorrect-click" class="hide">
-        <hr />
-        Incorrect!
-      </div>
-    </div>
 
-    <!-- 'End Of Game' Display Page -->
-    <div id="end-page" class="hide">
-      <h3 class="mainTitle">Great Job!</h3>
-      <h4 class="title">Thanks for playing!</h4>
-      <div>
-        <div id="enterInt">
-          <label id="enter-initials">⬇ Enter Initials Below ⬇ </label>
-          <input id="initials-input" placeholder="Enter Initials Here" />
+      <!-- 'Quiz Questions' Display Page -->
+      <!-- Using the class of hide to change the display through css using javascript -->
+      <!-- Here is where the questions & answers will be implemented through javascript-->
+
+      <div id="questions-page" class="hide">
+        <h3 id="question-title" class="question"></h3>
+        <div id="question-answers" class="answers"></div>
+        <!-- Set to appear and hide to show the outcome of the answer a use had selected-->
+        <div id="correct-click" class="hide">
+          <hr />
+          Correct!
         </div>
-        <button id="submit-initials-button">Submit</button>
+        <div id="incorrect-click" class="hide">
+          <hr />
+          Incorrect!
+        </div>
       </div>
-    </div>
 
-    <!-- Highscore Page-->
-    <div id="highscore-page" class="hide">
-      <h4 class="mainTitle">Highscores</h4>
-      <ul id="highscore-list"></ul>
-      <!-- I want to add where the scores are stored here-->
-      <div id="highscore-list">
-        Highscore Board coming to our website in the next update
+      <!-- 'End Of Game' Display Page -->
+      <div id="end-page" class="hide">
+        <h3 class="mainTitle">Great Job!</h3>
+        <h4 class="title">Thanks for playing!</h4>
+        <div>
+          <div id="enterInt">
+            <label id="enter-initials">⬇ Enter Initials Below ⬇ </label>
+            <input id="initials-input" placeholder="Enter Initials Here" />
+            <!--input box for user to enter initials for the highscore board-->
+          </div>
+          <button id="submit-initials-button">Submit</button>
+        </div>
       </div>
-      <button id="go-back-button">Go Back</button>
-      <button id="clear-hs-button">Clear Highscores</button>
 
-      <!--input box for user to enter initials then on submission-->
-    </div>
-
+      <!-- Highscore Page-->
+      <div id="highscore-page" class="hide">
+        <h4 class="mainTitle">Highscores</h4>
+        <ul id="highscore-list"></ul>
+        <!-- I want to add where the scores are stored here-->
+        <div id="highscore-list">
+          Highscore Board coming to our website in the next update
+        </div>
+        <button id="go-back-button">Go Back</button>
+        <button id="clear-hs-button">Clear Highscores</button>
+      </div>
+    </main>
+    <!-- Linking my script.js-->
     <script type="text/javascript" src="./Assets/js/script.js"></script>
   </body>
 </html>
