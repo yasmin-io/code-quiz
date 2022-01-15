@@ -5,19 +5,31 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./Assets/css/style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Domine:wght@600&family=Montserrat:ital,wght@0,300;0,400;0,500;0,700;1,100&display=swap"
+      rel="stylesheet"
+    />
+
     <title>Code Quiz</title>
   </head>
   <body>
-    <!-- Navigation Bar with timer and Highscore Page link-->
-    <nav>
-      <a id="highscore-link">HighScore</a>
-      <div id="timer-title">Time Remaining:<span id="timer"></span></div>
-    </nav>
+    <!-- Display Timer to show the User how long they have left of their game-->
+    <div id="timer-title">Time Remaining:<span id="timer"></span></div>
 
     <!--- Information 'Start Game' Page -->
     <div id="start-page">
       <h1 id="quiz-title">Coding Quiz Challenge</h1>
-      <p id="coding-para">This is a quiz pog! Are you ready?</p>
+      <p id="coding-para">
+        This is a short quiz to put your javascript knowledge to the test.
+        <br /><br />
+        Here are the rules:<br /><br />1. You have 20 seconds to answer all 4
+        questions. <br />2. If you get a question wrong, time will be taken off
+        your 'Time Remaining'.<br />
+        3. Look closely and be FAST! A trick question might appear. <br /><br />
+        Good Luck!
+      </p>
       <button id="start-quiz-button" class="start-button">Start</button>
     </div>
     <!-- 'Quiz Questions' Display Page -->
@@ -39,21 +51,20 @@
 
     <!-- 'End Of Game' Display Page -->
     <div id="end-page" class="hide">
-      <h3>Thanks for taking part</h3>
-      <h4>
-        Final Score:
-        <p class="final-score"></p>
-      </h4>
+      <h3 class="mainTitle">Great Job!</h3>
+      <h4 class="title">Thanks for playing!</h4>
       <div>
-        <p>Enter Initials:</p>
-        <input id="initials-input" placeholder="Initials" />
+        <div id="enterInt">
+          <label id="enter-initials">⬇ Enter Initials Below ⬇ </label>
+          <input id="initials-input" placeholder="Enter Initials Here" />
+        </div>
         <button id="submit-initials-button">Submit</button>
       </div>
     </div>
 
     <!-- Highscore Page-->
     <div id="highscore-page" class="hide">
-      <h4>Highscores</h4>
+      <h4 class="mainTitle">Highscores</h4>
       <ul id="highscore-list"></ul>
       <!-- I want to add where the scores are stored here-->
       <div id="highscore-list">

@@ -1,8 +1,102 @@
+:root {
+  --lightPurple: #eee0ff;
+  --darkPurple: #9f8eb4;
+  --lighterPurple: #e9e1f2;
+}
+
 /* Using the this class and adding a display of none will allow us to change the visbility through javascript*/
 .hide {
   display: none;
 }
 
-.start-button {
-  width: 50%;
+/* Centering Everything and setting a consistent background color*/
+body {
+  background-color: var(--lightPurple);
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  text-align: center;
+  min-height: 100vh;
+  padding-top: 100px;
+}
+
+h1 {
+  text-align: center;
+  font-size: 300%;
+  font-family: "Domine", serif;
+  font-weight: 600;
+}
+
+/* Button Styling*/
+button {
+  background-color: #592c82;
+  border: 2px solid;
+  border-color: #592c82;
+  border-radius: 3px;
+  color: #fff;
+  padding: 12px 24px;
+  text-align: center;
+  font: 700 "OpenSans", sans-serif;
+  font-weight: bold;
+  font-size: 16px;
+  margin: 4px 2px;
+  transition: 0.3s;
+}
+/* When we hover over the buttons, I want a smooth transition in color and shape*/
+button:hover {
+  cursor: pointer;
+  background-color: var(--darkPurple);
+  border: 2px solid;
+  border-radius: 3px;
+  border-color: var(--darkPurple);
+  color: #fff;
+}
+
+input {
+  padding: 10px 5px 10px 40px;
+  display: block;
+  border: 1px solid #ededed;
+  border-radius: 4px;
+  position: relative;
+  width: 25%;
+  margin: 15px auto;
+}
+
+#coding-para,
+#highscore-list {
+  text-align: center;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 300;
+  margin: 15px auto;
+}
+
+#timer-title,
+#timer {
+  display: block;
+  padding: 10px;
+  border-color: var(--darkPurple);
+  border: 5px;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 300;
+}
+
+#start-page {
+  margin: 0 auto;
+}
+
+.title {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 500;
+}
+
+.mainTitle {
+  font-family: "Domine", serif;
+  font-weight: 600;
+  font-size: 200%;
+}
+
+#enter-initials,
+#question-title {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 400;
 }

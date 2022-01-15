@@ -78,11 +78,11 @@ function quizTimer() {
   // Decrement the value of timeLeft and display the updated text
   countDown = setInterval(function () {
     timeLeft--;
-    timerEl.innerText = timeLeft;
+    timerEl.innerText = " " + timeLeft + " Seconds";
     // Once the timer reaches a value of 0, I want to end the timer
     if (timeLeft <= 0) {
       clearInterval(countDown);
-      timerEl.innerHTML = "0";
+      timerEl.innerHTML = "00:00";
       endQuiz();
     }
   }, 1000);
