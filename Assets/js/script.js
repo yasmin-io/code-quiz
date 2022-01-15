@@ -40,8 +40,9 @@ var scoreInput = document.getElementById("initials-input");
 var highscoreList = document.getElementById("highscore-list");
 var timerEl = document.getElementById("timer");
 var highscoreLink = document.getElementById("highscore-link");
-var highscores = [];
 
+// I want to store all of my initials and highscores in here
+var highscores = [];
 var initials = localStorage.getItem("initals");
 
 // This function is what is triggered after you click the start game button
@@ -68,7 +69,7 @@ function quizTimer() {
     if (timeLeft <= 0) {
       clearInterval(timerEl);
       timerEl.innerHTML = "0";
-      // call end game function
+      endQuiz();
     }
   }, 1000);
 }
@@ -144,27 +145,17 @@ function storeHighscores() {
   localStorage.setItem("Initials", JSON.stringify(scoreInput.value));
 }
 
-function saveHighscore() {
+function saveHighscore(event) {
+  event.preventDefault();
+
   //the score would be saved to local storage
-  endPage.setAttribute("class", "hide");
+  endPage.setAttribute("class", "hide"); //Doesnt work??
   highscorePage.removeAttribute("class");
   highscoreLink.setAttribute("class", "hide");
 
-  //
-  //
-  //
-  //
   // Clear highscore list element
   highscoreList.innerHTML = "";
   storeHighscores();
-
-  // Creating a new li for each score ??????????
-  for (var i = 0; i < highscores.length; i++) {
-    var highscore = highscores[i];
-
-    var li = document.createElement("li");
-    li.textContent = highscore;
-  }
 }
 
 function goBack() {
