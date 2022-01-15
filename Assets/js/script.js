@@ -68,6 +68,7 @@ function quizTimer() {
     if (timeLeft <= 0) {
       clearInterval(timerEl);
       timerEl.innerHTML = "0";
+      // call end game function
     }
   }, 1000);
 }
