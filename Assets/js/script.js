@@ -26,8 +26,9 @@ var quizQuestions = [
 var questionIndex = 0;
 // Setting these values on the gloabl scope to make available to all functions
 var timeLeft = 20;
+var amountLost = 5;
 var countDown;
-// add true and flase value count
+var correctAnswers = 3;
 
 // Variable for the different Pages
 var startPage = document.getElementById("start-page");
@@ -46,6 +47,11 @@ var highscoreList = document.getElementById("highscore-list");
 var timerEl = document.getElementById("timer");
 var highscoreLink = document.getElementById("highscore-link");
 
+//LOCAL STORAGE
+var highscore = localStorage.getItem("highscores");
+//var score = highscore.score;
+//var initials = highscore.initials;
+
 // This function is what is triggered after you click the start game button
 function startGame(event) {
   event.preventDefault();
@@ -61,8 +67,6 @@ function startGame(event) {
 }
 
 function quizTimer() {
-  var timeLeft = 20;
-
   // Decrement the value of timeLeft and display the updated text
   countDown = setInterval(function () {
     timeLeft--;
@@ -75,9 +79,6 @@ function quizTimer() {
     }
   }, 1000);
 }
-
-// We need to subtract time from the quizTimer, everytime a question is wrong
-function subtractTime() {}
 
 // This function is what plays the next question
 function nextQuestion() {
@@ -110,8 +111,8 @@ function selectAnswer() {
   // do................
   if (this.value !== quizQuestions[questionIndex].correctAnswer) {
     console.log("User selected the incorrect answer");
-    // remove time from timer
-    // REMOVE STUFF FROM TIMER USING TIMER INTERVAL
+    // time is deducted every question answered wrong
+    timeLeft = timeLeft - amountLost;
   } else {
     console.log("User selected the correct answer");
     //add to the users score
@@ -139,6 +140,20 @@ function endQuiz() {
   console.log("Quiz finished");
 }
 
+function highscoreObject() {
+  if (highscore) {
+    // This variable turns the string back into an object
+    var parsedHighscore = JSON.parse(highscore);
+
+    for (var i = 0; i < parsedHighscore.length; i++) {
+      var highscore = highscore[i];
+
+      //var score = highscore.score;
+      //var initials = highscore.initials;
+    }
+  }
+}
+
 function saveHighscore(event) {
   event.preventDefault();
 
@@ -146,6 +161,33 @@ function saveHighscore(event) {
   endPage.setAttribute("class", "hide");
   highscorePage.removeAttribute("class");
   highscoreLink.setAttribute("class", "hide");
+
+  // Using Local Storage to render a highscore board
+  // highscore = localStorage.getItem("highscores");
+
+  // this variable is what the user typed into the input box
+  var userInitials = scoreInput.value;
+  if (!highscore) {
+    // Turning the string back into an array
+    var parsedHighscore = JSON.parse(highscore);
+
+    // push the new score into the object
+    parsedHighscore.push({
+      initials: userInitials,
+      score: correctAnswers,
+    });
+    // Then we are updating the local storage with this new information
+    localStorage.setItem("highscore", JSON.stringify(parsedHighscore));
+  } else {
+    //If this is the first time the user has played, we need to create the array
+    localStorage.setItem(
+      "highscore",
+      JSON.stringify({
+        initials: userInitials,
+        score: correctAnswers,
+      })
+    );
+  }
 }
 
 // The backButton will reload the page bringing you back to the starting page
