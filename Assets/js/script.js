@@ -22,21 +22,19 @@ var quizQuestions = [
   },
 ];
 
-// Setting the index to 0 on the global scope so that the value
 var questionIndex = 0;
 // Setting these values on the gloabl scope to make available to all functions
 var timeLeft = 20;
 var amountLost = 5;
 var countDown;
-var correctAnswers = 3;
+var correctAnswers = 0;
 
-// Variable for the different Pages
+// Variables for the different Pages
 var startPage = document.getElementById("start-page");
 var questionPage = document.getElementById("questions-page");
 var endPage = document.getElementById("end-page");
 var highscorePage = document.getElementById("highscore-page");
 
-// Other variables to for elements and such
 var backButton = document.getElementById("go-back-button");
 var startButton = document.getElementById("start-quiz-button");
 var submitButton = document.getElementById("submit-initials-button");
@@ -46,11 +44,11 @@ var scoreInput = document.getElementById("initials-input");
 var highscoreList = document.getElementById("highscore-list");
 var timerEl = document.getElementById("timer");
 var highscoreLink = document.getElementById("highscore-link");
+var correctClick = document.getElementById("correct-click");
+var incorrectClick = document.getElementById("incorrect-click");
 
-//LOCAL STORAGE
+// Local Storage variables
 var highscore = localStorage.getItem("highscores");
-//var score = highscore.score;
-//var initials = highscore.initials;
 
 // This function is what is triggered after you click the start game button
 function startGame(event) {
@@ -58,8 +56,6 @@ function startGame(event) {
   // Setting previous content to hide and new content to be visible to the user
   startPage.setAttribute("class", "hide");
   questionPage.removeAttribute("class");
-
-  // add true and false value count
 
   // Triggers next question & Starts timer
   nextQuestion();
@@ -110,7 +106,6 @@ function selectAnswer() {
   // If the current value of 'this' does not equal the current questions correct answer then
   // do................
   if (this.value !== quizQuestions[questionIndex].correctAnswer) {
-    console.log("User selected the incorrect answer");
     // time is deducted every question answered wrong
     timeLeft = timeLeft - amountLost;
   } else {
@@ -136,42 +131,26 @@ function endQuiz() {
   // Hide questions page
   questionPage.setAttribute("class", "hide");
   endPage.removeAttribute("class");
-
-  console.log("Quiz finished");
-}
-
-function highscoreObject() {
-  if (highscore) {
-    // This variable turns the string back into an object
-    var parsedHighscore = JSON.parse(highscore);
-
-    for (var i = 0; i < parsedHighscore.length; i++) {
-      var highscore = highscore[i];
-
-      //var score = highscore.score;
-      //var initials = highscore.initials;
-    }
-  }
 }
 
 function saveHighscore(event) {
   event.preventDefault();
 
-  //the score would be saved to local storage
+  // The score would be saved to local storage
   endPage.setAttribute("class", "hide");
   highscorePage.removeAttribute("class");
   highscoreLink.setAttribute("class", "hide");
 
   // Using Local Storage to render a highscore board
-  // highscore = localStorage.getItem("highscores");
+  // Currently, it only displays the highscore in the local storage
 
-  // this variable is what the user typed into the input box
+  // This variable is what the user typed into the input box
   var userInitials = scoreInput.value;
   if (!highscore) {
     // Turning the string back into an array
     var parsedHighscore = JSON.parse(highscore);
 
-    // push the new score into the object
+    // Push the new score into the object
     parsedHighscore.push({
       initials: userInitials,
       score: correctAnswers,
@@ -195,7 +174,6 @@ function goBack() {
   location.reload();
 }
 
-// Event listeners for all buttons in my quiz
 backButton.addEventListener("click", goBack);
 submitButton.addEventListener("click", saveHighscore);
 startButton.addEventListener("click", startGame);
