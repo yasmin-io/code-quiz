@@ -24,6 +24,11 @@ var quizQuestions = [
 
 // Setting the index to 0 on the global scope so that the value
 var questionIndex = 0;
+// Setting these values on the gloabl scope to make available to all functions
+var timeLeft = 20;
+var countDown;
+// add true and flase value count
+
 // Variable for the different Pages
 var startPage = document.getElementById("start-page");
 var questionPage = document.getElementById("questions-page");
@@ -41,25 +46,22 @@ var highscoreList = document.getElementById("highscore-list");
 var timerEl = document.getElementById("timer");
 var highscoreLink = document.getElementById("highscore-link");
 
-// I want to store all of my initials and highscores in here
-var highscores = [];
-var initials = localStorage.getItem("initals");
-
 // This function is what is triggered after you click the start game button
 function startGame(event) {
   event.preventDefault();
-
+  // Setting previous content to hide and new content to be visible to the user
   startPage.setAttribute("class", "hide");
   questionPage.removeAttribute("class");
 
-  //set timer
+  // add true and false value count
 
+  // Triggers next question & Starts timer
   nextQuestion();
   quizTimer();
 }
 
 function quizTimer() {
-  var timeLeft = 6;
+  var timeLeft = 20;
 
   // Decrement the value of timeLeft and display the updated text
   countDown = setInterval(function () {
@@ -67,12 +69,15 @@ function quizTimer() {
     timerEl.innerText = timeLeft;
     // Once the timer reaches a value of 0, I want to end the timer
     if (timeLeft <= 0) {
-      clearInterval(timerEl);
+      clearInterval(countDown);
       timerEl.innerHTML = "0";
       endQuiz();
     }
   }, 1000);
 }
+
+// We need to subtract time from the quizTimer, everytime a question is wrong
+function subtractTime() {}
 
 // This function is what plays the next question
 function nextQuestion() {
@@ -103,7 +108,6 @@ function nextQuestion() {
 function selectAnswer() {
   // If the current value of 'this' does not equal the current questions correct answer then
   // do................
-  //FINISH THIS
   if (this.value !== quizQuestions[questionIndex].correctAnswer) {
     console.log("User selected the incorrect answer");
     // remove time from timer
@@ -117,49 +121,35 @@ function selectAnswer() {
   questionIndex++;
 
   // If the current question is the last question available then run the endQuiz function but
-  // if not, then the game hasn't. Run the nextQuestion function and display a new question.
+  // if not, then the game hasn't ended. Run the nextQuestion function and display a new question.
   if (questionIndex === quizQuestions.length) {
     endQuiz();
+    // and we want to stop the timer
+    clearInterval(countDown);
   } else {
     nextQuestion();
   }
 }
 
 function endQuiz() {
-  console.log("Quiz finished");
-
-  //clear interval
-
-  //hide questions section
+  // Hide questions page
   questionPage.setAttribute("class", "hide");
   endPage.removeAttribute("class");
 
-  //show end page which inclues an input box and submit button
-
-  //on click of that submit button calls saveHighscore
-  //
-}
-
-function storeHighscores() {
-  // Stringify and set key in LocalStorage highscore initials
-  localStorage.setItem("Initials", JSON.stringify(scoreInput.value));
+  console.log("Quiz finished");
 }
 
 function saveHighscore(event) {
   event.preventDefault();
 
   //the score would be saved to local storage
-  endPage.setAttribute("class", "hide"); //Doesnt work??
+  endPage.setAttribute("class", "hide");
   highscorePage.removeAttribute("class");
   highscoreLink.setAttribute("class", "hide");
-
-  // Clear highscore list element
-  highscoreList.innerHTML = "";
-  storeHighscores();
 }
 
+// The backButton will reload the page bringing you back to the starting page
 function goBack() {
-  // The backButton will reload the page bringing you back to the starting page
   location.reload();
 }
 
