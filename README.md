@@ -21,7 +21,7 @@ At some point, every coder has to complete a coding assessment.'Code Quiz' is a 
 
 [Code Quiz | Yasmin A](https://yasmin-io.github.io/code-quiz/)
 
-![Homepage](https://github.com/yasmin-io/code-quiz/blob/72b9239eac9d8bc1ccdc5275996a90271bfbbace/Assets/images/In%20game.png)
+![Homepage](https://github.com/yasmin-io/code-quiz/blob/e6d806d6bb78226c1a7a173c1a3599466974b308/Assets/images/Website%20Main%20Page.png)
 ![game](https://github.com/yasmin-io/code-quiz/blob/72b9239eac9d8bc1ccdc5275996a90271bfbbace/Assets/images/In%20game.png)
 
 ## Future Tests (Bugs & Fixes)
